@@ -5,7 +5,6 @@ import qs from 'qs'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
-import webpackConfig from '../webpack.config'
 
 import React from 'react'
 import { renderToString } from 'react-dom/server'
@@ -17,6 +16,12 @@ import { fetchCounter } from '../common/api/counter'
 
 const app = new Express()
 const port = 3000
+
+if (process.env.NODE_ENV === 'production') {
+  var webpackConfig = require('../webpack.prod.config.js')
+} else {
+  var webpackConfig = require('../webpack.config.js')
+}
 
 // Use this middleware to set up hot module reloading via webpack.
 const compiler = webpack(webpackConfig)

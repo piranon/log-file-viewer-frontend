@@ -1,11 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const del = require('del')
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-const extractSass = new ExtractTextPlugin({
-  filename: "[name].[contenthash].css"
-});
 
 class CleanPlugin {
   constructor(options) {
@@ -30,6 +25,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new CleanPlugin({
       files: ['dist/*']
     }),
@@ -43,8 +39,7 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
-    }),
-    extractSass
+    })
   ],
   module: {
     loaders: [
@@ -61,21 +56,17 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [ 'css-loader' ]
-        })
+        use: [ 'style-loader', 'css-loader' ]
       },
       {
         test: /\.scss$/,
-        use: extractSass.extract({
-          use: [{
-            loader: "css-loader"
-          }, {
-            loader: "sass-loader"
-          }],
-          fallback: "style-loader"
-        })
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader"
+        }, {
+          loader: "sass-loader"
+        }]
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
