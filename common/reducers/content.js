@@ -4,9 +4,9 @@ const content = (state = [], action) => {
   console.log(action, '###########################')
   switch(action.type) {
     case LOAD_CONTENT_SUCCESS:
-      return action.payload
+      return action.payload.data
     case LOAD_CONTENT_FAILURE:
-      return action.payload
+      return []
     default:
       return state
   }

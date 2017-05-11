@@ -30,6 +30,9 @@ body {
     padding-bottom: 1px;
     min-height: 400px;
 }
+.list-group-item {
+    word-wrap: break-word;
+}
 .list-group-item > .badge {
     float: left;
     margin-right: 12px;
