@@ -79,7 +79,7 @@ const renderFullPage = (html, preloadedState) => {
         <div class="container">
           <div id="app">${html}</div>
           <footer class="footer">
-            <p>&copy; 2016 Piranon Nawakulpun.</p>
+            <p>&copy; 2017 Piranon Nawakulpun.</p>
           </footer>
         </div>
         <script>
