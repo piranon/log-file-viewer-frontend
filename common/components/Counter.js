@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Button } from 'react-bootstrap';
 
 const Counter = ({increment, incrementIfOdd, incrementAsync, decrement, counter}) => (
   <p>
     Clicked: {counter} times
     {' '}
-    <button onClick={increment}>+</button>
+    <Button bsStyle="primary" onClick={increment}>+</Button>
     {' '}
     <button onClick={decrement}>-</button>
     {' '}
