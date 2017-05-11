@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Header, Counter } from '../components'
+import { Header, SearchBar, Counter } from '../components'
 import * as CounterActions from '../actions'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../theme/style.scss'
@@ -10,6 +10,7 @@ const App = (props) => {
   return (
     <div>
       <Header />
+      <SearchBar />
       <Counter
         increment={props.increment}
         incrementIfOdd={props.incrementIfOdd}
