@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { loadContent } from '../actions'
 import { SearchBar, ContentList } from '../components'
 
 class ContentContainer extends Component {
   static propTypes = {
-    content: PropTypes.array.isRequired,
-    onLoadContent: PropTypes.func.isRequired
+    content: PropTypes.array.isRequired
   }
 
   shouldComponentUpdate(nextProps) {
-    return this.props.contentFile !== nextProps.contentFile
+    return this.props.content !== nextProps.content
   }
 
   onLoadContent = () => {
@@ -19,16 +17,11 @@ class ContentContainer extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <SearchBar onLoadContent={this.onLoadContent} />
-        <ContentList content={this.props.content} />
-      </div>
-    )
+    return <ContentList content={this.props.content} />
   }
 }
 
 export default connect(
   (state) => ({ content: state.content }),
-  { onLoadContent: loadContent }
+  {}
 )(ContentContainer)

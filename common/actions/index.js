@@ -9,8 +9,23 @@ import {
 
 export const loadContent = (pathFile) => ({
   [CALL_API]: {
-    endpoint: `${FILES_ENDPOINT}/${pathFile}`,
+    endpoint: `${FILES_ENDPOINT}${pathFile}`,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET'
+    },
     method: 'GET',
     types: [LOAD_CONTENT_REQUEST, LOAD_CONTENT_SUCCESS, LOAD_CONTENT_FAILURE]
   }
 })
+
+//export const loadContent = (values) => (
+//  (dispatch) =>
+//    dispatch({
+//      [CALL_API]: {
+//        endpoint: `${FILES_ENDPOINT}/${values.pathFile}`,
+//        method: 'GET',
+//        types: [LOAD_CONTENT_REQUEST, LOAD_CONTENT_SUCCESS, LOAD_CONTENT_FAILURE]
+//      }
+//    })
+//)

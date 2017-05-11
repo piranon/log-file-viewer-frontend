@@ -1,15 +1,36 @@
 import React from 'react'
-import { FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types'
+import { Field } from 'redux-form'
+import { Alert, InputGroup, Button } from 'react-bootstrap';
 
-const SearchBar = () => (
-  <FormGroup>
+const renderError = ({ meta: { touched, error } }) => touched && error ?
+  <Alert bsStyle="danger">{error}</Alert> : false
+
+const SearchBar = ({ handleSubmit }) => (
+  <div>
+  <form onSubmit={handleSubmit} className='form-group'>
     <InputGroup>
-      <FormControl type="text" placeholder="/path/to/file" />
+      <Field
+        className='form-control'
+        component='input'
+        name='pathFile'
+        placeholder='/path/to/file'
+        type='text' />
       <InputGroup.Button>
-        <Button bsStyle="primary">View</Button>
+        <Button
+          bsStyle='primary'
+          type='submit'>
+          Submit
+        </Button>
       </InputGroup.Button>
     </InputGroup>
-  </FormGroup>
+  </form>
+  <Field name="pathFile" component={renderError}/>
+    </div>
 );
+
+SearchBar.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
+}
 
 export default SearchBar

@@ -1,12 +1,15 @@
 import { createStore, applyMiddleware } from 'redux'
+import { apiMiddleware } from 'redux-api-middleware'
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers'
 
 const configureStore = (preloadedState) => {
+  const middlewares = [thunk, apiMiddleware]
+
   const store = createStore(
     rootReducer,
     preloadedState,
-    applyMiddleware(thunk)
+    applyMiddleware(...middlewares)
   )
 
   if (module.hot) {
