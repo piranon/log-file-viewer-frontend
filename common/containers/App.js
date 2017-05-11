@@ -1,28 +1,16 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { Header, SearchBar, ContentList, Pagination, Counter } from '../components'
-import * as CounterActions from '../actions'
+import Content from './Content'
+import { Header, Pagination } from '../components'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../theme/style.scss'
 
-const App = (props) => {
+const App = () => {
   return (
     <div>
       <Header />
-      <SearchBar />
-      <ContentList />
+      <Content />
       <Pagination />
     </div>
   )
 }
-
-const mapStateToProps = (state) => ({
-  counter: state.counter
-})
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(CounterActions, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App

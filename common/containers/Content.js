@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { loadContent } from '../actions'
 import { SearchBar, ContentList } from '../components'
 
-class SearchBarContainer extends Component {
+class ContentContainer extends Component {
   static propTypes = {
     content: PropTypes.array.isRequired,
     onLoadContent: PropTypes.func.isRequired
@@ -31,4 +31,4 @@ class SearchBarContainer extends Component {
 export default connect(
   (state) => ({ content: state.content }),
   { onLoadContent: loadContent }
-)(SearchBarContainer)
+)(ContentContainer)
