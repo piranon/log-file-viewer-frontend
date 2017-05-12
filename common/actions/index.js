@@ -18,14 +18,3 @@ export const loadContent = (pathFile) => ({
     types: [LOAD_CONTENT_REQUEST, LOAD_CONTENT_SUCCESS, LOAD_CONTENT_FAILURE]
   }
 })
-
-//export const loadContent = (values) => (
-//  (dispatch) =>
-//    dispatch({
-//      [CALL_API]: {
-//        endpoint: `${FILES_ENDPOINT}/${values.pathFile}`,
-//        method: 'GET',
-//        types: [LOAD_CONTENT_REQUEST, LOAD_CONTENT_SUCCESS, LOAD_CONTENT_FAILURE]
-//      }
-//    })
-//)

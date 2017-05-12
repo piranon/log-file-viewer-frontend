@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Jumbotron, ListGroup } from 'react-bootstrap';
+import { Jumbotron, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 const ContentList = ({ content }) => (
   <Jumbotron>
     <ListGroup>
       {
         content.map((list) => (
-          <li className='list-group-item' key={list.list}>
+          <ListGroupItem key={list.line}>
             <span className="badge">{list.line}</span>{list.text}
-          </li>
+          </ListGroupItem>
         ))
       }
     </ListGroup>
