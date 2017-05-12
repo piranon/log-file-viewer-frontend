@@ -18,12 +18,7 @@ const calculatePagination = ({ data, total_count }) => {
     last = `${total_count - ((total_count % LIMIT) - 1)},${total_count - (total_count % LIMIT) + LIMIT}`
   }
 
-  return {
-    first,
-    back,
-    next,
-    last
-  }
+  return { first, back, next, last}
 }
 
 const pagination = (state = {}, action) => {
