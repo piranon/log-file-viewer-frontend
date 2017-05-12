@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "cross-env BABEL_ENV='node' node server/index.js",
-    "start-prod": "cross-env BABEL_ENV='node' NODE_ENV=production node server/index.js",
+    "start-prod": "yarn run build && cross-env BABEL_ENV='node' NODE_ENV=production node server/index.js",
     "build": "webpack --config ./webpack.prod.config.js --progress",
     "lint": "./node_modules/.bin/eslint -c .eslintrc.js client/ common/ server/ ; exit 0"
   },
