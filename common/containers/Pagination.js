@@ -14,6 +14,11 @@ class PaginationContainer extends Component {
     return this.props.pagination !== nextProps.pagination
   }
 
+  onClickFirst = () => {
+    if (this.props.pagination.first)
+      this.props.onLoadContent(this.props.pathFile, this.props.pagination.first)
+  }
+
   onClickBack = () => {
     if (this.props.pagination.back)
       this.props.onLoadContent(this.props.pathFile, this.props.pagination.back)
@@ -24,11 +29,18 @@ class PaginationContainer extends Component {
       this.props.onLoadContent(this.props.pathFile, this.props.pagination.next)
   }
 
+  onClickLast = () => {
+    if (this.props.pagination.last)
+      this.props.onLoadContent(this.props.pathFile, this.props.pagination.last)
+  }
+
   render() {
     return <Pagination
       pagination={this.props.pagination}
+      onClickFirst={this.onClickFirst}
       onClickBack={this.onClickBack}
-      onClickNext={this.onClickNext} />
+      onClickNext={this.onClickNext}
+      onClickLast={this.onClickLast} />
   }
 }
 

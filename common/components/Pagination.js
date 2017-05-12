@@ -2,9 +2,19 @@ import React from 'react'
 import { Pager } from 'react-bootstrap'
 import classNames from 'classnames'
 
-const Pagination = ({ pagination, onClickBack, onClickNext }) => (
+const Pagination = ({
+  pagination,
+  onClickFirst,
+  onClickBack,
+  onClickNext,
+  onClickLast
+  }) => (
   <Pager>
-    <Pager.Item>{' |< '}</Pager.Item>
+    <Pager.Item
+      className={ classNames({ 'disabled': !pagination.first }) }
+      onClick={() => onClickFirst()}>
+        {' |< '}
+    </Pager.Item>
     {' '}
     <Pager.Item
       className={ classNames({ 'disabled': !pagination.back }) }
@@ -14,9 +24,15 @@ const Pagination = ({ pagination, onClickBack, onClickNext }) => (
     {' '}
     <Pager.Item
       className={ classNames({ 'disabled': !pagination.next }) }
-      onClick={() => onClickNext()}>{' > '}</Pager.Item>
+      onClick={() => onClickNext()}>
+        {' > '}
+    </Pager.Item>
     {' '}
-    <Pager.Item>{' >| '}</Pager.Item>
+    <Pager.Item
+      className={ classNames({ 'disabled': !pagination.last }) }
+      onClick={() => onClickLast()}>
+        {' >| '}
+    </Pager.Item>
   </Pager>
 );
 
