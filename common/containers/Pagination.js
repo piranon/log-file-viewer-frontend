@@ -46,8 +46,8 @@ class PaginationContainer extends Component {
 
 export default connect(
   (state) => ({
-    pagination: state.pagination,
-    pathFile: state.pathFile
+    pathFile: state.form.fields && state.form.fields.pathFile || '',
+    pagination: state.pagination
   }),
   { onLoadContent: loadContent }
 )(PaginationContainer)

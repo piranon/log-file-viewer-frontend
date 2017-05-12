@@ -28,17 +28,9 @@ app.use(webpackHotMiddleware(compiler))
 
 const handleRender = (req, res) => {
   const preloadedState = {
-    form: {
-      fields: {
-        pathFile: ''
-      },
-      errors: {
-        pathFile: ''
-      }
-    },
+    form: {},
     content: [],
-    pagination: {},
-    pathFile: ''
+    pagination: {}
   }
 
   // Create a new Redux store instance

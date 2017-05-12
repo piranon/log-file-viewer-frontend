@@ -26,7 +26,7 @@ class SearchBarContainer extends Component {
   render() {
     return (
       <SearchBar
-        errors={this.props.form.errors}
+        errors={this.props.form && this.props.form.errors || {}}
         handelSubmit={this.handelSubmit}
         onPathFileChange={this.onPathFileChange}
       />
