@@ -15,15 +15,18 @@ class PaginationContainer extends Component {
   }
 
   onClickBack = () => {
-    this.props.onLoadContent(this.props.pathFile, this.props.pagination.back)
+    if (this.props.pagination.back)
+      this.props.onLoadContent(this.props.pathFile, this.props.pagination.back)
   }
 
   onClickNext = () => {
-    this.props.onLoadContent(this.props.pathFile, this.props.pagination.next)
+    if (this.props.pagination.next)
+      this.props.onLoadContent(this.props.pathFile, this.props.pagination.next)
   }
 
   render() {
     return <Pagination
+      pagination={this.props.pagination}
       onClickBack={this.onClickBack}
       onClickNext={this.onClickNext} />
   }
