@@ -9,7 +9,9 @@ const SearchBar = ({ errors, handelSubmit, onPathFileChange }) => (
   <div>
     <FormGroup>
       <InputGroup>
-        <FormControl
+        <input
+          autocomplete='off'
+          className='form-control'
           id='pathFile'
           placeholder='/path/to/file'
           type='text'
