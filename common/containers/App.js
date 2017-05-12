@@ -1,7 +1,8 @@
 import React from 'react'
 import Content from './Content'
 import SearchBar from './SearchBar'
-import { Header, Pagination } from '../components'
+import Pagination from './Pagination'
+import { Header } from '../components'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../theme/style.scss'
 

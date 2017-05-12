@@ -27,7 +27,7 @@ app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig
 app.use(webpackHotMiddleware(compiler))
 
 const handleRender = (req, res) => {
-  const preloadedState = { content: [] }
+  const preloadedState = { content: [], pagination: {}, pathFile: '' }
 
   // Create a new Redux store instance
   const store = configureStore(preloadedState)
