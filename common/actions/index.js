@@ -3,11 +3,13 @@ import { FILES_ENDPOINT, LINES_PARAM } from '../constants/endpoints'
 import {
   LOAD_CONTENT_REQUEST,
   LOAD_CONTENT_SUCCESS,
-  LOAD_CONTENT_FAILURE
+  LOAD_CONTENT_FAILURE,
+  CHANGE_PATH_FILE,
+  SET_PATH_FILE_ERROR
 } from '../constants/actionTypes'
 
 const buildEndpoint = (pathFile, queryString) => {
-  let endpoint = `${FILES_ENDPOINT}${pathFile}`
+  let endpoint = `${FILES_ENDPOINT}${pathFile[0] === '/' ? pathFile.slice(1) : pathFile}`
 
   if (queryString)
     endpoint += `?${LINES_PARAM}=${queryString}`
@@ -27,7 +29,7 @@ export const loadContent = (pathFile, queryString = '') => ({
     types: [
       LOAD_CONTENT_REQUEST,
       {
-        type: 'LOAD_CONTENT_SUCCESS',
+        type: LOAD_CONTENT_SUCCESS,
         meta: { pathFile }
       },
       LOAD_CONTENT_FAILURE
@@ -37,7 +39,7 @@ export const loadContent = (pathFile, queryString = '') => ({
 
 export const pathFileChange = (pathFile) => {
   return {
-    type: 'CHANGE_PATH_FILE',
+    type: CHANGE_PATH_FILE,
     payload: {
       fields: {
         pathFile: pathFile
@@ -48,7 +50,7 @@ export const pathFileChange = (pathFile) => {
 
 export const setPathFileError = (error) => {
   return {
-    type: 'SET_PATH_FILE_ERROR',
+    type: SET_PATH_FILE_ERROR,
     payload: {
       errors: {
         pathFile: error
