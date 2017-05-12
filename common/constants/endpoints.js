@@ -1,5 +1,8 @@
-//const API_ROOT = 'http://api.logfileviewer.tk'
-const API_ROOT = 'http://localhost/slim-app/public'
+let API_ROOT = 'http://api.logfileviewer.tk'
+
+if (process.env.NODE_ENV !== 'production')
+  API_ROOT = 'http://localhost/slim-app/public'
+
 
 export const FILES_ENDPOINT = `${API_ROOT}/files`
 

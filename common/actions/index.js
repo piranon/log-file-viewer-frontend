@@ -1,5 +1,4 @@
 import { CALL_API } from 'redux-api-middleware'
-import { push } from 'react-router-redux'
 import { FILES_ENDPOINT, LINES_PARAM } from '../constants/endpoints'
 import {
   LOAD_CONTENT_REQUEST,
@@ -35,3 +34,25 @@ export const loadContent = (pathFile, queryString = '') => ({
     ]
   }
 })
+
+export const pathFileChange = (pathFile) => {
+  return {
+    type: 'CHANGE_PATH_FILE',
+    payload: {
+      fields: {
+        pathFile: pathFile
+      }
+    }
+  };
+};
+
+export const setPathFileError = (error) => {
+  return {
+    type: 'SET_PATH_FILE_ERROR',
+    payload: {
+      errors: {
+        pathFile: error
+      }
+    }
+  };
+};

@@ -1,36 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Field } from 'redux-form'
-import { Alert, InputGroup, Button } from 'react-bootstrap';
+import { Alert, FormControl, FormGroup, InputGroup, Button } from 'react-bootstrap';
 
-const renderError = ({ meta: { touched, error } }) => touched && error ?
-  <Alert bsStyle="danger">{error}</Alert> : false
+const renderError = (errors) => errors.pathFile ?
+  <Alert bsStyle="danger">{errors.pathFile}</Alert> : false
 
-const SearchBar = ({ handleSubmit }) => (
+const SearchBar = ({ errors, handelSubmit, onPathFileChange }) => (
   <div>
-  <form onSubmit={handleSubmit} className='form-group'>
-    <InputGroup>
-      <Field
-        className='form-control'
-        component='input'
-        name='pathFile'
-        placeholder='/path/to/file'
-        type='text' />
-      <InputGroup.Button>
-        <Button
-          bsStyle='primary'
-          type='submit'>
-          Submit
-        </Button>
-      </InputGroup.Button>
-    </InputGroup>
-  </form>
-  <Field name="pathFile" component={renderError}/>
-    </div>
+    <FormGroup>
+      <InputGroup>
+        <FormControl
+          id='pathFile'
+          placeholder='/path/to/file'
+          type='text'
+          onChange={onPathFileChange}
+        />
+        <InputGroup.Button>
+          <Button
+            bsStyle='primary'
+            type='submit'
+            onClick={() => handelSubmit()} >
+            Submit
+          </Button>
+        </InputGroup.Button>
+      </InputGroup>
+    </FormGroup>
+    {renderError(errors)}
+  </div>
 );
 
 SearchBar.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  errors: PropTypes.object.isRequired,
+  handelSubmit: PropTypes.func.isRequired,
+  onPathFileChange: PropTypes.func.isRequired
 }
 
 export default SearchBar

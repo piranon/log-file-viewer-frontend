@@ -22,6 +22,5 @@ class ContentContainer extends Component {
 }
 
 export default connect(
-  (state) => ({ content: state.content }),
-  {}
+  (state) => ({ content: state.content }), {}
 )(ContentContainer)
