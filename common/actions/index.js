@@ -20,11 +20,6 @@ const buildEndpoint = (pathFile, queryString) => {
 export const loadContent = (pathFile, queryString = '') => ({
   [CALL_API]: {
     endpoint: buildEndpoint(pathFile, queryString),
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET',
-      'Access-Control-Allow-Credentials': true
-    },
     method: 'GET',
     types: [
       LOAD_CONTENT_REQUEST,
