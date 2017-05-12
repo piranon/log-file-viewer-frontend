@@ -1,15 +1,18 @@
 import { createStore, applyMiddleware } from 'redux'
 import { apiMiddleware } from 'redux-api-middleware'
+import { loadingBarMiddleware } from 'react-redux-loading-bar'
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers'
 
 const configureStore = (preloadedState) => {
-  const middlewares = [thunk, apiMiddleware]
+  const middleWares = [thunk, apiMiddleware, loadingBarMiddleware({
+    promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE']
+  })]
 
   const store = createStore(
     rootReducer,
     preloadedState,
-    applyMiddleware(...middlewares)
+    applyMiddleware(...middleWares)
   )
 
   if (module.hot) {
